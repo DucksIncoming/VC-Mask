@@ -11,9 +11,6 @@ RATE = 44100
 
 DebugMode = True
 
-def debugAnalyzer(data_int : int):
-    pass
-
 
 def getMicAudio():
     global DebugMode
@@ -27,14 +24,20 @@ def getMicAudio():
         frames_per_buffer=BUFFER
     )
 
+    fig, ax = plt.subplots()
+    x = np.arange(0, 2 * BUFFER, 2)
+    line, = ax.plot(x, np.random.rand(BUFFER))
+    ax.set_xlim(0,255)
+    ax.set_ylim(0, BUFFER)
+
     try:
         while True:
             data = stream.read(BUFFER)
-            data_int = struct.unpack(str(4 * BUFFER) + 'B', data)
-            #print(data_int)
+            data_int = np.array(struct.unpack(str(4 * BUFFER) + 'B', data), dtype='b')[::2] + 127
 
-            if (DebugMode):
-                debugAnalyzer(data_int)
+            line.set_ydata(data_int)
+            fig.canvas.draw()
+            fig.canvas.flush_events()
     except KeyboardInterrupt:
         pass
 

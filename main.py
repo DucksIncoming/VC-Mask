@@ -5,9 +5,9 @@ from pyaudio import PyAudio, paContinue, paFloat32
 import readchar
 import AudioEffect
 
-PITCH = 2.0
 IN = []
 OUT = []
+PITCH = 1.0
 
 def main():
     global PITCH
@@ -41,5 +41,12 @@ def main():
     stream.close()
     pa.terminate()
 
-if __name__ == "__main__":
-    main()
+def setPitch(amount=1.0, alignFormants=False):
+    global PITCH
+    PITCH = amount
+    
+    if (alignFormants):
+        pass
+
+setPitch(1.5, False)
+main()

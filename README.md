@@ -1,6 +1,6 @@
 # VC-Mask
 
-Software for use with a custom built voice changer mask. Captures the speakers voice using a microphone, modifies it through code to cause the voice to sound more masculine or feminine, depending on settings, and retransmits the sound.
+Software for use with a custom built voice changer mask. Captures the speakers voice using a microphone, modifies it through code to cause the voice to sound more higher or lower, depending on settings, and retransmits the sound.
 
 Current Status: Incomplete
 
